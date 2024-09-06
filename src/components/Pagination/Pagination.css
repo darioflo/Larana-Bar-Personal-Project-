@@ -1,0 +1,43 @@
+.pagination-container {
+  width: 75%;
+  height: 85vh;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.pagination-buttons {
+  display: flex;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  align-self: flex-end;
+}
+
+.pagination-buttons button {
+  padding: 10px 20px;
+  background-color: #242424;
+  color: #ff0072;
+  border: 3px solid #ff0072;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.pagination-buttons button:hover {
+  background-color: #ff0072;
+  color: #242424;
+}
+
+.cards-container {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

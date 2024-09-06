@@ -1,0 +1,52 @@
+:root {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  min-width: 100%;
+  height: auto;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento vertical */
+}
+
+/* Estilo para el "dedo" de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+  background-color: #8f0342; /* Color del "dedo" */
+  border-radius: 3px; /* Borde redondeado del "dedo" */
+}
+
+/* Estilo para la pista de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+  background: transparent; /* Fondo de la pista (puedes cambiarlo si lo deseas) */
+}
