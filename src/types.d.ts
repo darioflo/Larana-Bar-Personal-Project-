@@ -8,4 +8,10 @@ export interface Drink {
   strDrink: string | undefined;
   strDrinkThumb: string | undefined;
   idDrink: string | undefined;
+  strAlcoholic?: string | undefined;
+  strGlass?: string | undefined;
+  strIngredient1?: string | undefined;
+  strIngredient2?: string | undefined;
+  strIngredient3?: string | undefined;
+  strInstructions?: string;
 }
