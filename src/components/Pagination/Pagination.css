@@ -9,6 +9,7 @@
   flex-wrap: wrap;
   position: relative;
   overflow: hidden;
+  margin-top: 2.5rem;
 }
 
 .close {

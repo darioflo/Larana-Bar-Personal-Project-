@@ -3,6 +3,11 @@
   height: auto;
   border-radius: 0.3rem;
   padding: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 .drink-filters {
   width: 100%;

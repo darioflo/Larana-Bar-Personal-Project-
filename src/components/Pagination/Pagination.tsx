@@ -5,6 +5,7 @@ import { Drink } from "../../types";
 import useDrinks from "../../globalStates/useDrinks";
 import useCheckboxStore from "../../globalStates/useCheckboxStore";
 import axios, { AxiosResponse } from "axios";
+import { selectUrl } from "./selectUrl";
 
 interface ApiResponse {
   drinks: Drink[];
@@ -31,21 +32,6 @@ const Pagination: React.FC = () => {
     return drinks.slice(startIndex, endIndex);
   };
 
-  const selectUrl = (inputCheckedID: string): string => {
-    switch (inputCheckedID) {
-      case "alcoholic":
-        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${inputChecked}`;
-      case "ingredient":
-        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${inputChecked}`;
-      case "glass":
-        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${inputChecked}`;
-      case "category":
-        return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${inputChecked}`;
-      default:
-        return "";
-    }
-  };
-
   const getDrinks = async (url: string): Promise<void> => {
     try {
       let response: AxiosResponse<ApiResponse> = await axios.get(url);
@@ -54,19 +40,6 @@ const Pagination: React.FC = () => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    if (inputCheckedID !== null) {
-      const url = selectUrl(inputCheckedID);
-      if (url) {
-        getDrinks(url);
-      }
-    }
-  }, [inputCheckedID, inputChecked]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [inputChecked]);
 
   const getPaginationButtons = () => {
     const buttons = [];
@@ -86,6 +59,19 @@ const Pagination: React.FC = () => {
     }
     return buttons;
   };
+
+  useEffect(() => {
+    if (inputCheckedID !== null) {
+      const url = selectUrl(inputCheckedID, inputChecked);
+      if (url) {
+        getDrinks(url);
+      }
+    }
+  }, [inputCheckedID, inputChecked]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [inputChecked]);
 
   return (
     <div className="pagination-container">

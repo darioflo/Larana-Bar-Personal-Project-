@@ -48,7 +48,7 @@ const Summary: React.FC = () => {
       </details>
       <details className="details-aside" open>
         <summary>Ingredientes</summary>
-        {ingredient.slice(0, 6).map((item: AlcoholicItem, index: number) => (
+        {ingredient.slice(0, 5).map((item: AlcoholicItem, index: number) => (
           <div key={index} className="drink-filters">
             <label htmlFor={`ingredient-${index}`}>
               {item.strIngredient1}
@@ -68,7 +68,7 @@ const Summary: React.FC = () => {
       </details>
       <details className="details-aside" open>
         <summary>Vasos</summary>
-        {glass.slice(0, 6).map((item: AlcoholicItem, index: number) => (
+        {glass.slice(0, 5).map((item: AlcoholicItem, index: number) => (
           <div key={index} className="drink-filters">
             <label htmlFor={`glass-${index}`}>
               {item.strGlass}{" "}
