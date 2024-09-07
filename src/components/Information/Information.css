@@ -1,0 +1,39 @@
+.information-container {
+  height: 85vh;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.info-box {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #514d4f;
+  flex-direction: column;
+  transition: border-color 0.5s ease-out;
+  color: #c7b9c0;
+
+  p {
+    margin-left: 3rem;
+    font-size: 14px;
+  }
+}
+
+.info-box:nth-child(4) {
+  border-color: #ff0072;
+  background-color: #ee016c;
+  color: #514d4f;
+}
+
+.info-box:nth-child(4):hover {
+  border-color: #514d4f;
+}
+
+.info-box:hover {
+  border-color: #ff0072;
+}

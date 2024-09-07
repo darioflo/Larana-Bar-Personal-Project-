@@ -26,7 +26,7 @@ const Summary: React.FC = () => {
 
   return (
     <>
-      <details className="details-aside">
+      <details className="details-aside" open>
         <summary>Alcoholic</summary>
         {alcoholic.map((item: AlcoholicItem, index: number) => (
           <div key={index} className="drink-filters">
@@ -46,9 +46,9 @@ const Summary: React.FC = () => {
           </div>
         ))}
       </details>
-      <details className="details-aside">
+      <details className="details-aside" open>
         <summary>Ingredientes</summary>
-        {ingredient.slice(0, 5).map((item: AlcoholicItem, index: number) => (
+        {ingredient.slice(0, 6).map((item: AlcoholicItem, index: number) => (
           <div key={index} className="drink-filters">
             <label htmlFor={`ingredient-${index}`}>
               {item.strIngredient1}
@@ -66,9 +66,9 @@ const Summary: React.FC = () => {
           </div>
         ))}
       </details>
-      <details className="details-aside">
+      <details className="details-aside" open>
         <summary>Vasos</summary>
-        {glass.slice(0, 5).map((item: AlcoholicItem, index: number) => (
+        {glass.slice(0, 6).map((item: AlcoholicItem, index: number) => (
           <div key={index} className="drink-filters">
             <label htmlFor={`glass-${index}`}>
               {item.strGlass}{" "}
@@ -86,7 +86,7 @@ const Summary: React.FC = () => {
           </div>
         ))}
       </details>
-      <details className="details-aside">
+      <details className="details-aside" open>
         <summary>Categorias</summary>
         {category.slice(0, 4).map((item: AlcoholicItem, index: number) => (
           <div key={index} className="drink-filters">

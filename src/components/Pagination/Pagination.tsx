@@ -13,7 +13,7 @@ interface ApiResponse {
 const Pagination: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { drinks, setDrinks } = useDrinks();
-  const { inputCheckedID, inputChecked } = useCheckboxStore();
+  const { inputCheckedID, inputChecked, setInputSelected } = useCheckboxStore();
   const cardsPerPage = 3;
 
   const totalPages = Math.ceil(drinks.length / cardsPerPage);
@@ -27,7 +27,6 @@ const Pagination: React.FC = () => {
   const getCurrentPageDrinks = () => {
     const startIndex = (currentPage - 1) * cardsPerPage;
     const endIndex = startIndex + cardsPerPage;
-    console.log(startIndex, endIndex);
 
     return drinks.slice(startIndex, endIndex);
   };
@@ -69,10 +68,6 @@ const Pagination: React.FC = () => {
     setCurrentPage(1);
   }, [inputChecked]);
 
-  useEffect(() => {
-    console.log(drinks, inputChecked, inputCheckedID);
-  }, [drinks, inputChecked, inputCheckedID]);
-
   const getPaginationButtons = () => {
     const buttons = [];
     for (let i = -1; i <= 1; i++) {
@@ -94,6 +89,19 @@ const Pagination: React.FC = () => {
 
   return (
     <div className="pagination-container">
+      <div className="close" onClick={() => setInputSelected(null, null)}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="1.5em"
+          height="2em"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="#514d4f"
+            d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4"
+          />
+        </svg>
+      </div>
       <div className="cards-container">
         {getCurrentPageDrinks().map((drink: Drink) => (
           <Card key={drink.idDrink} drink={drink} />
