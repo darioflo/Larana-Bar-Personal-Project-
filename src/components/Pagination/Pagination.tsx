@@ -6,15 +6,21 @@ import useDrinks from "../../globalStates/useDrinks";
 import useCheckboxStore from "../../globalStates/useCheckboxStore";
 import axios, { AxiosResponse } from "axios";
 import { selectUrl } from "./selectUrl";
+import useDrinksResults from "../../globalStates/useSearchResults";
 
 interface ApiResponse {
   drinks: Drink[];
 }
 
-const Pagination: React.FC = () => {
+interface PaginationProps {
+  drinkSearched: Drink[];
+}
+
+const Pagination: React.FC<PaginationProps> = ({ drinkSearched }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const { drinks, setDrinks } = useDrinks();
   const { inputCheckedID, inputChecked, setInputSelected } = useCheckboxStore();
+  const { setDrinksResults } = useDrinksResults();
   const cardsPerPage = 3;
 
   const totalPages = Math.ceil(drinks.length / cardsPerPage);
@@ -28,8 +34,11 @@ const Pagination: React.FC = () => {
   const getCurrentPageDrinks = () => {
     const startIndex = (currentPage - 1) * cardsPerPage;
     const endIndex = startIndex + cardsPerPage;
+    console.log(drinkSearched, drinkSearched.length);
 
-    return drinks.slice(startIndex, endIndex);
+    return drinkSearched.length > 1
+      ? drinkSearched.slice(startIndex, endIndex)
+      : drinks.slice(startIndex, endIndex);
   };
 
   const getDrinks = async (url: string): Promise<void> => {
@@ -60,6 +69,11 @@ const Pagination: React.FC = () => {
     return buttons;
   };
 
+  const handleClose = (): void => {
+    setInputSelected(null, null);
+    setDrinksResults([]);
+  };
+
   useEffect(() => {
     if (inputCheckedID !== null) {
       const url = selectUrl(inputCheckedID, inputChecked);
@@ -73,9 +87,12 @@ const Pagination: React.FC = () => {
     setCurrentPage(1);
   }, [inputChecked]);
 
+  useEffect(() => {
+    console.log("drinkSearched in Pagination:", drinkSearched);
+  }, [drinkSearched]);
   return (
     <div className="pagination-container">
-      <div className="close" onClick={() => setInputSelected(null, null)}>
+      <div className="close" onClick={() => handleClose()}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="1.5em"

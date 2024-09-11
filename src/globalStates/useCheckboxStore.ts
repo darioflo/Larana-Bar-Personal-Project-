@@ -9,7 +9,7 @@ interface CheckboxState {
 const useCheckboxStore = create<CheckboxState>((set) => ({
   inputChecked: null,
   inputCheckedID: null,
-  setInputSelected: (name: string | null , id: string | null ) =>
+  setInputSelected: (name: string | null, id: string | null) =>
     set({ inputChecked: name, inputCheckedID: id }),
 }));
 

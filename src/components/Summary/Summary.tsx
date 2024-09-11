@@ -3,6 +3,7 @@ import "./Summary.css";
 import useStoreFilters from "../../globalStates/useStoreFilters";
 import useCheckboxStore from "../../globalStates/useCheckboxStore";
 import React, { useEffect } from "react";
+import useDrinksResults from "../../globalStates/useSearchResults";
 
 interface AlcoholicItem {
   strAlcoholic: string;
@@ -15,9 +16,11 @@ const Summary: React.FC = () => {
   const { alcoholic, ingredient, category, glass, getFilters } =
     useStoreFilters();
   const { inputChecked, setInputSelected } = useCheckboxStore();
+  const { setDrinksResults } = useDrinksResults();
 
   const handleCheckboxChange = (name: string, id: string): void => {
     setInputSelected(name, id);
+    setDrinksResults([]);
   };
 
   useEffect(() => {
