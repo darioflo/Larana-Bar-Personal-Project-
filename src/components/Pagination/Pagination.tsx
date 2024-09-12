@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Card from "../Card/Card";
 import "./Pagination.css";
 import { Drink } from "../../types";
@@ -7,6 +7,7 @@ import useCheckboxStore from "../../globalStates/useCheckboxStore";
 import axios, { AxiosResponse } from "axios";
 import { selectUrl } from "./selectUrl";
 import useDrinksResults from "../../globalStates/useSearchResults";
+import { intersectionObserverPagination } from "./intersectionObserverPagination";
 
 interface ApiResponse {
   drinks: Drink[];
@@ -22,6 +23,7 @@ const Pagination: React.FC<PaginationProps> = ({ drinkSearched }) => {
   const { inputCheckedID, inputChecked, setInputSelected } = useCheckboxStore();
   const { setDrinksResults } = useDrinksResults();
   const cardsPerPage = 3;
+  const paginationContainer = useRef<HTMLDivElement>(null);
 
   const totalPages = Math.ceil(drinks.length / cardsPerPage);
 
@@ -90,8 +92,15 @@ const Pagination: React.FC<PaginationProps> = ({ drinkSearched }) => {
   useEffect(() => {
     console.log("drinkSearched in Pagination:", drinkSearched);
   }, [drinkSearched]);
+
+  useEffect(() => {
+    if (paginationContainer.current) {
+      intersectionObserverPagination(paginationContainer.current);
+    }
+  }, []);
+
   return (
-    <div className="pagination-container">
+    <div className="pagination-container" ref={paginationContainer}>
       <div className="close" onClick={() => handleClose()}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -1,0 +1,114 @@
+/* From Uiverse.io by joe-watson-sbf */
+.flip-card {
+  background-color: transparent;
+  width: 70%;
+  height: 70%;
+  perspective: 1000px;
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+}
+
+.imgs {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cafe {
+  width: 80px;
+  height: 80px;
+}
+
+.flip-card-front {
+  background: linear-gradient(
+    120deg,
+    #ff0072 30%,
+    #242424 100%,
+    #242424 80%,
+    rgba(255, 0, 114, 0.6) 48%
+  );
+  color: #ebdfe5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flip-card-front img {
+  width: 100px;
+  height: 100px;
+}
+
+.flip-card-back {
+  background: linear-gradient(
+    120deg,
+    #242424 30%,
+    #ff0072 100%,
+    #242424 20%,
+    rgba(36, 36, 36, 0.8) 78%
+  );
+  color: #ebdfe5;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flip-card-back img {
+  width: 150px;
+  height: 150px;
+  border-radius: 0.2rem;
+}
+
+.text-random-card {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.2rem;
+}

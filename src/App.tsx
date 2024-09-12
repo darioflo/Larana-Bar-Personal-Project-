@@ -7,6 +7,7 @@ import Information from "./components/Information/Information";
 import Pagination from "./components/Pagination/Pagination";
 import useDrinksResults from "./globalStates/useSearchResults";
 import { useEffect } from "react";
+import FlipSection from "./components/Flip-Section/FlipSection";
 
 function App() {
   const { inputChecked } = useCheckboxStore();
@@ -29,6 +30,9 @@ function App() {
         ) : (
           <Pagination drinkSearched={drinkResults} />
         )}
+      </section>
+      <section className="section-3">
+        <FlipSection />
       </section>
     </div>
   );
