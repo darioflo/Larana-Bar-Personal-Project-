@@ -8,10 +8,14 @@ import Pagination from "./components/Pagination/Pagination";
 import useDrinksResults from "./globalStates/useSearchResults";
 import { useEffect } from "react";
 import FlipSection from "./components/Flip-Section/FlipSection";
+import LocationInfo from "./components/Location-Info/LocationInfo";
+import LocationMap from "./components/Location-Map/LocationMap";
+import { useShowMap } from "./globalStates/useShowMap";
 
 function App() {
   const { inputChecked } = useCheckboxStore();
   const { drinkResults } = useDrinksResults();
+  const { showMap } = useShowMap();
 
   useEffect(() => {
     console.log("drinkResults in ParentComponent:", drinkResults);
@@ -33,6 +37,7 @@ function App() {
       </section>
       <section className="section-3">
         <FlipSection />
+        {showMap ? <LocationMap /> : <LocationInfo />}
       </section>
     </div>
   );

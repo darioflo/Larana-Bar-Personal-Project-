@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./Information.css";
+import { intersectionObserverInfo } from "./intersectionObserverInfo";
 
 const Information: React.FC = () => {
+  const flipCardRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (flipCardRef.current) {
+      intersectionObserverInfo(flipCardRef.current);
+    }
+  }, []);
+
   return (
-    <div className="information-container">
+    <div className="information-container" ref={flipCardRef}>
       <div className="info-box">
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-export const intersectionObserverPagination = (
+export const intersectionObserverLocation = (
   element: HTMLElement | null
 ): IntersectionObserver | null => {
   if (!element) return null;
@@ -14,7 +14,7 @@ export const intersectionObserverPagination = (
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.01 }
   );
 
   observer.observe(element);

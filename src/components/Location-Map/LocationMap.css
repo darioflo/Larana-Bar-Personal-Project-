@@ -1,0 +1,6 @@
+.location-map {
+  width: 55%;
+  height: 500px !important;
+  border: 3px solid #514d4f;
+  overflow: hidden;
+}
