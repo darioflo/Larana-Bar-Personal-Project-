@@ -15,3 +15,21 @@ export interface Drink {
   strIngredient3?: string | undefined;
   strInstructions?: string;
 }
+
+export interface TeamUsers {
+  name: {
+    title: string;
+    first: string;
+    last: string;
+  };
+  cell: string;
+  email: string;
+  city: string;
+  country: string;
+  dob: {
+    age: number;
+  };
+  picture: {
+    thumbnail: string;
+  };
+}

@@ -11,6 +11,7 @@ import FlipSection from "./components/Flip-Section/FlipSection";
 import LocationInfo from "./components/Location-Info/LocationInfo";
 import LocationMap from "./components/Location-Map/LocationMap";
 import { useShowMap } from "./globalStates/useShowMap";
+import Team from "./components/TeamUsers/Team";
 
 function App() {
   const { inputChecked } = useCheckboxStore();
@@ -38,6 +39,9 @@ function App() {
       <section className="section-3">
         <FlipSection />
         {showMap ? <LocationMap /> : <LocationInfo />}
+      </section>
+      <section className="section-4">
+        <Team />
       </section>
     </div>
   );
